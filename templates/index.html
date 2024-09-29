@@ -1,16 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Opinimate</title>
-        <link rel="stylesheet" href="static/css/style.css">
-    </head>
-    <body>
-     <navbar>
-        
-     </navbar>
-        
-    </body>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Opinimate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+
+<body>
+  <header>
+    <navbar class="navbar">
+      <div class="logo">
+        <img src="static/images/opinimate-bg.png" />
+      </div>
+
+      <ul class="nav-link">
+        <div class="login">
+          <i class="fa-solid fa-unlock"></i>
+          <li><a href="">Login</a></li>
+        </div>
+
+        <div class="signup">
+          <i class="fa-solid fa-circle-user"></i>
+          <li><a href="">SignUp</a></li>
+        </div>
+      </ul>
+    </navbar>
+  </header>
+
+  <Section class="main">
+    <div class="url-box-container">
+      <div class="url-box">
+        <input type="text" placeholder="Enter youtube URL">
+      </div>
+
+      <div class="prompt">
+        <textarea placeholder="What are you looking for this in video..."></textarea>
+      </div>
+
+      <div class="btn"> Analyze </div>
+    </div>
+  </Section>
+</body>
+
 </html>
