@@ -23,6 +23,7 @@
             background-color: #f4f4f4;
         }
 
+        
         /* Common white background style */
         .white-bg {
             background-color: #ffffff;
@@ -39,23 +40,17 @@
         /* Worth Section */
         .worth {
             grid-column: 1 / 4;
-            grid-row: 1 / 3;
+            grid-row: 1 / 2;
             color: #275cbe;
             padding: 20px;
         }
 
-        .worth h1 {
-            font-size: 2.2rem;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        .worth h4 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #333;
-            text-align: center;
-        }
+       .worth-text{
+        color: #333;
+        font-size: 2rem;
+        font-weight: 700;
+        font-family: 'Segoe UI', sans-serif;
+       }
 
         .worth .reason {
             font-size: 1.2rem;
@@ -66,8 +61,8 @@
             overflow-y: auto;
         }
 
-        /* Chart Section */
-        .chart-container {
+         /* Chart Section */
+         .chart-container {
             grid-column: 4 / 8;
             grid-row: 1 / 3;
             padding: 20px;
@@ -75,17 +70,19 @@
             flex-direction: column;
             align-items: center;
         }
-        .chart-container h1{
+
+        .chart-container h1 {
             padding-bottom: 1rem;
+            font-family: 'Segoe UI', sans-serif;
         }
 
-
+        /* Main Chart Styling */
         .chart {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
             aspect-ratio: 1;
             background: conic-gradient(
-                #4CAF50 0 70%, /* Positive 70% */
+                #4CAF50 0 70%,  /* Positive 70% */
                 #FFC107 70% 80%, /* Neutral 10% */
                 #F44336 80% 100% /* Negative 20% */
             );
@@ -93,47 +90,98 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft Shadow */
+            position: relative;
+            transition: transform 0.3s ease-in-out;
         }
 
+        .chart:hover {
+            transform: scale(1.05); /* Hover effect for better interaction */
+        }
+
+        /* Inner Text Styling */
         .chart-text {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: #fff;
+            position: absolute;
+            letter-spacing: 1px;
+            text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Text Shadow */
+            transition: color 0.3s ease;
         }
 
+        .chart:hover .chart-text {
+            color: #ffeb3b; /* Subtle color change on hover */
+        }
+
+        /* Description Container */
         .chart-description {
             display: flex;
             justify-content: space-between;
             width: 100%;
-            color: #333;
             font-size: 1rem;
+            color: #444;
+            font-family: 'Arial', sans-serif;
+            margin-bottom: 20px;
         }
 
         .chart-description div {
-            background-color: #275cbe;
+            background: linear-gradient(135deg, #3b82f6, #0ea5e9); /* Gradient background */
             color: #fff;
-            padding: 10px;
-            border-radius: 8px;
+            padding: 15px;
+            border-radius: 12px;
             text-align: center;
             flex: 1;
             margin: 0 10px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+            transition: transform 0.3s ease, background 0.4s ease;
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase; /* Modern all-caps style */
+            letter-spacing: 1px;
         }
+
+        .chart-description div:hover {
+            transform: translateY(-8px) scale(1.05); /* Lift and enlarge effect */
+            background: linear-gradient(135deg, #60a5fa, #38bdf8); /* Brighter gradient on hover */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+        }
+
+        .chart-description div:active {
+            transform: translateY(-4px) scale(1); /* Slight pushback on click */
+            background: linear-gradient(135deg, #2563eb, #0ea5e9); /* Darker color on click */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-description .positive {
+            background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient for positive */
+        }
+
+        .chart-description .neutral {
+            background: linear-gradient(135deg, #ffca28, #ffd54f); /* Yellow gradient for neutral */
+        }
+
+        .chart-description .negative {
+            background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negative */
+        }
+
 
         /* Positive Comments Section */
         .positive {
             grid-column: 1 / 4;
             grid-row: 3 / 6;
-            background-color: #03a9f4;
-            color: #fff;
+            background-color:  #ffffff;
+            color: #37d917;
             padding: 20px;
+            border-radius: 12px;
         }
 
         .positive h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
             text-align: center;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .positive ul {
@@ -159,15 +207,17 @@
         .negative {
             grid-column: 1 / 4;
             grid-row: 6 / 9;
-            background-color: #f44336;
-            color: #fff;
+            background-color:  #ffffff;
+            color: #d31d1d;
             padding: 20px;
+            border-radius: 12px;
         }
 
         .negative h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
             text-align: center;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         .negative ul {
@@ -191,37 +241,99 @@
 
         /* Description Section */
         .description {
-            grid-column: 4 / 8;
-            grid-row: 3 / 7;
+            grid-column: 1 / 4;
+            grid-row: 2 / 3;
             padding: 20px;
             text-align: justify;
         }
 
+       /* Description Container Styling */
+        .description {
+            padding: 20px;
+            background-color: #ffffff; /* Clean white background */
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); /* Light shadow for subtle depth */
+            border: 1px solid #e0e0e0; /* Light border for clean edges */
+            max-width: 800px;
+            margin: 0 auto; /* Center alignment */
+        }
+
+        /* Paragraph Styling */
         .description p {
             font-size: 1.2rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            background-color: #f9f9f94f; /* Softer background for better readability */
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for floating effect */
+            color: #333333; /* Darker text color for better contrast */
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* Hover Effect for Paragraphs */
+        .description p:hover {
+            background-color: #f1f1f1; /* Slightly darker background on hover */
+            transform: translateY(-5px); /* Lift effect */
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+        }
+
+        /* Heading Styling */
+        .description h1 {
+            font-size: 2rem;
+            color: #333;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e0e0; /* Underline effect for heading */
+            font-family: 'Segoe UI', sans-serif; /* Modern, clean font */
+            letter-spacing: 1px;
+            text-align: center; /* Center the heading for a clean layout */
+            text-transform: capitalize;
+        }
+
+         /* Video Details Section */
+        .video-details {
+            grid-column: 4 / 8;
+            grid-row: 3 / 9;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow-y: auto; /* Scroll when content exceeds height */
+        }
+
+        .video-details:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+        }
+
+        .video-details h1 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
-            line-height: 1.6;
-            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .video-details ul {
+            list-style: none;
+        }
+
+        .video-details ul li {
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .description h1{
-            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Rating Section */
-        .rating {
-            grid-column: 4 / 8;
-            grid-row: 7 / 9;
-            padding: 20px;
-            text-align: center;
+        .video-details ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-
-        .stars {
-            font-size: 2rem;
-            color: gold;
-        }
+        
 
         /* Responsive Design */
         @media (max-width: 1024px) {
@@ -254,12 +366,25 @@
             }
 
             .chart {
+                max-width: 250px;
+                }
+                .chart-text {
+                    font-size: 2rem;
+                }
+                .chart-description {
+                    flex-direction: column;
+                }
+                .chart-description div {
+                    margin: 10px 0;
+                }
+
+            /* .chart {
                 max-width: 150px;
             }
 
             .chart-text, .chart-description div {
                 font-size: 4vw;
-            }
+            } */
 
             .worth h1, .worth h3, .chart-text, .positive h3, .negative h3, .description, .stars {
                 font-size: 4vw;
@@ -275,21 +400,19 @@
 <body>
     <!-- Worth Section -->
     <div class="worth white-bg">
-        <h1>It's Worth or Not</h1>
-        <h4>Why should you watch?</h4>
-        <div class="reason">The reason should be pasted here</div>
+        <div class="worth-text">It's Worth or Not</div> 
     </div>
 
     <!-- Chart Section -->
     <div class="chart-container white-bg">
-        <h1>Comments Analysis Chart</h1>
+        <h1>Comment Sentiment Distribution</h1>
         <div class="chart">
             <div class="chart-text">70%</div>
         </div>
         <div class="chart-description">
-            <div>Positive: 70%</div>
-            <div>Neutral: 10%</div>
-            <div>Negative: 20%</div>
+            <div class="positive">Positive</div>
+            <div class="neutral">Neutral</div>
+            <div class="negative">Negative</div>
         </div>
     </div>
 
@@ -323,10 +446,20 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate nisl a venenatis luctus. Sed at aliquet leo, sed vehicula eros. Donec nec scelerisque velit, a vehicula dolor. Integer vehicula libero eget magna vestibulum, in viverra erat hendrerit. Aliquam et nulla vel nunc placerat consequat. Quisque vel vestibulum elit, vel malesuada mi.</p>
     </div>
 
-    <!-- Rating Section -->
-    <div class="rating white-bg">
-        <h1>Rating</h1>
-        <div class="stars">★★★★☆</div>
+    <!-- Video Details -->
+     
+    <div class="video-details white-bg">
+        <h1>Video Details</h1>
+        <ul>
+            <li>Title: "Understanding AI and Machine Learning"</li>
+            <li>Views: 1,000,000</li>
+            <li>Likes: 85,000</li>
+            <li>Dislikes: 5,000</li>
+            <li>Comments: 10,000</li>
+            <li>Uploaded: March 2024</li>
+        </ul>
     </div>
+
+    
 </body>
 </html>
