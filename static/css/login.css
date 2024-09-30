@@ -1,0 +1,126 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f9f1f1; 
+}
+
+.logo{
+    display: inline-block;
+    padding: 8px 0 0 3%;
+}
+
+.logo img {
+ width: 6em;
+}
+
+.login-box {
+    display: flex;
+    height: 100vh;
+}
+
+.right-box {
+    padding: 50px;
+}
+
+.left-box {
+    flex: 1;
+    background-color: #ffffff;
+}
+
+.content{
+    padding: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 89px;
+    margin-bottom: 53px;
+    color: #333;
+    font-family: "Fredoka", sans-serif;
+}
+
+.login-form{
+    padding-left: 16%;
+}
+
+.login-form input {
+    display: block;
+    width: 85%;
+    padding: 16px;
+    margin: 24px 0;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    font-family: "Fredoka", sans-serif;
+    font-size: 20px;
+    background-color: #ebebeb
+}
+
+.sign-in-btn {
+    width: 38%;
+    padding: 20px;
+    background-color: #00bfa5;
+    border: none;
+    color: white;
+    font-size: 21px;
+    border-radius: 44px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 150px;
+    font-family: "Fredoka", sans-serif;
+}
+
+.sign-in-btn:hover {
+    background-color: #00a594;
+}
+
+.right-box {
+    content: "";
+    background: url("/static/images/login.jpg") no-repeat center / cover ;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 525px;
+}
+
+.right-box h2 {
+    font-size: 64px;
+    margin-bottom: 10px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+}
+
+.right-box p {
+    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1.6;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-size: 27px;
+}
+
+.sign-up-btn {
+    width: 51%;
+    padding: 16px;
+    background-color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 17px;
+    font-family: "Fredoka", sans-serif;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-up-btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+

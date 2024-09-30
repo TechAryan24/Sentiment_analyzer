@@ -1,0 +1,99 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #f9f1f1; 
+}
+
+.logo{
+    display: inline-block;
+    padding: 8px 0 0 3%;
+}
+
+.logo img {
+ width: 6em;
+}
+
+.login-box {
+    display: flex;
+    height: 100vh;
+}
+
+.right-box {
+    padding: 50px;
+}
+
+.left-box {
+    flex: 1;
+    background-color: #ffffff;
+}
+
+.content{
+    padding: 50px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 89px;
+    margin-bottom: 53px;
+    color: #333;
+    font-family: "Fredoka", sans-serif;
+}
+
+.login-form{
+    padding-left: 16%;
+}
+
+.login-form input {
+    display: block;
+    width: 85%;
+    padding: 16px;
+    margin: 24px 0;
+    border: 1px solid #ccc;
+    border-radius: 26px;
+    font-family: "Fredoka", sans-serif;
+    font-size: 20px;
+    background-color: #ebebeb
+}
+
+.sign-in-btn {
+    width: 38%;
+    padding: 20px;
+    background-color: #00bfa5;
+    border: none;
+    color: white;
+    font-size: 21px;
+    border-radius: 44px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 150px;
+    font-family: "Fredoka", sans-serif;
+}
+
+.sign-in-btn:hover {
+    background-color: #00a594;
+}
+
+.login-form p{
+    margin: 28px 150px 0 0;
+    font-size: 20px;
+    font-family: "Fredoka", sans-serif;
+}
+
+.right-box {
+    content: "";
+    background: url("/static/images/signup 1.avif") no-repeat center / cover ;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 525px;
+}
+
+
+
+
