@@ -68,12 +68,12 @@ i.fa-solid{
 .main{
     position: relative;
     top: 12rem;
-    left: 12rem;
+    left: 14rem;
 }
 
 .url-box-container{
     background-color: white;
-    height: 303px;
+    height: 412px;
     width: 72%;
     border-radius: 9px;
     align-content: center;
@@ -117,6 +117,7 @@ i.fa-solid{
 }
 .prompt textarea{
    width: 94%;
+   height: 184px;
    border-radius: 4px;
    padding: 11px;
    font-size: 24px;
