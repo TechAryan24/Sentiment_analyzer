@@ -45,9 +45,15 @@
         <textarea placeholder="What are you looking for this in video..."></textarea>
       </div>
 
-      <div class="btn"> Analyze </div>
+      <div class="btn" id="btn"> Analyze </div>
     </div>
   </Section>
+
+  <script type="text/javascript">
+    document.getElementById('btn').addEventListener('click', function() {
+        window.location.href = "{% url 'result' %}";
+    });
+</script>
 </body>
 
 </html>
