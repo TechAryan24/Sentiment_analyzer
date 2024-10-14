@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +11,7 @@
     integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="./static/css/style.css" />
+  <link rel="stylesheet" href="./static/css/style.css" />
 
 </head>
 
@@ -37,6 +38,7 @@
 
   <Section class="main">
     <div class="url-box-container">
+      <form method="POST" action="{% url 'result' %}"></form>
       <div class="url-box">
         <input type="text" placeholder="Enter youtube URL">
       </div>
@@ -45,15 +47,14 @@
         <textarea placeholder="What are you looking for in this video..."></textarea>
       </div>
 
-      <div class="btn" id="btn"> Analyze </div>
+      <div>
+        <button type="submit" id="btn" class="btn">Analyze</button>
+      </div>
+      </form>
     </div>
   </Section>
 
-  <script type="text/javascript">
-    document.getElementById('btn').addEventListener('click', function() {
-        window.location.href = "{% url 'result' %}";
-    });
-</script>
+  <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>

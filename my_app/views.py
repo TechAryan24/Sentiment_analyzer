@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from .sentiment_analyzer import analyze_comments, generate_description  # Import your analysis functions
 
 # Create your views here.
 def index(request):
@@ -12,3 +14,4 @@ def result(request):
 
 def signup(request):
     return render (request,'signup.html')
+

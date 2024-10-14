@@ -1,0 +1,389 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 equal columns */
+    grid-template-rows: repeat(8, auto); /* 8 rows */
+    gap: 20px;
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+
+/* Common white background style */
+.white-bg {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.white-bg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Worth Section */
+.worth {
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    color: #275cbe;
+    padding: 20px;
+}
+
+.worth-text{
+color: #333;
+font-size: 2rem;
+font-weight: 700;
+font-family: 'Segoe UI', sans-serif;
+}
+
+.worth .reason {
+    font-size: 1.2rem;
+    background-color: #f4f4f4;
+    height: 150px;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+ /* Chart Section */
+ .chart-container {
+    grid-column: 4 / 8;
+    grid-row: 1 / 3;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-container h1 {
+    padding-bottom: 1rem;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Main Chart Styling */
+.chart {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 1;
+    background: conic-gradient(
+        #4CAF50 0 70%,  /* Positive 70% */
+        #FFC107 70% 80%, /* Neutral 10% */
+        #F44336 80% 100% /* Negative 20% */
+    );
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft Shadow */
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.chart:hover {
+    transform: scale(1.05); /* Hover effect for better interaction */
+}
+
+/* Inner Text Styling */
+.chart-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    letter-spacing: 1px;
+    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Text Shadow */
+    transition: color 0.3s ease;
+}
+
+.chart:hover .chart-text {
+    color: #ffeb3b; /* Subtle color change on hover */
+}
+
+/* Description Container */
+.chart-description {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 1rem;
+    color: #444;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 20px;
+}
+
+.chart-description div {
+    background: linear-gradient(135deg, #3b82f6, #0ea5e9); /* Gradient background */
+    color: #fff;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    transition: transform 0.3s ease, background 0.4s ease;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase; /* Modern all-caps style */
+    letter-spacing: 1px;
+}
+
+.chart-description div:hover {
+    transform: translateY(-8px) scale(1.05); /* Lift and enlarge effect */
+    background: linear-gradient(135deg, #60a5fa, #38bdf8); /* Brighter gradient on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+.chart-description div:active {
+    transform: translateY(-4px) scale(1); /* Slight pushback on click */
+    background: linear-gradient(135deg, #2563eb, #0ea5e9); /* Darker color on click */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-description .positive {
+    background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient for positive */
+}
+
+.chart-description .neutral {
+    background: linear-gradient(135deg, #ffca28, #ffd54f); /* Yellow gradient for neutral */
+}
+
+.chart-description .negative {
+    background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negative */
+}
+
+
+/* Positive Comments Section */
+.positive {
+    grid-column: 1 / 4;
+    grid-row: 3 / 6;
+    background-color:  #ffffff;
+    color: #37d917;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.positive h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.positive ul {
+    list-style: none;
+}
+
+.positive ul li {
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: #333;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.positive ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Negative Comments Section */
+.negative {
+    grid-column: 1 / 4;
+    grid-row: 6 / 9;
+    background-color:  #ffffff;
+    color: #d31d1d;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.negative h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.negative ul {
+    list-style: none;
+}
+
+.negative ul li {
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    color: #333;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.negative ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Description Section */
+.description {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    padding: 20px;
+    text-align: justify;
+}
+
+/* Description Container Styling */
+.description {
+    padding: 20px;
+    background-color: #ffffff; /* Clean white background */
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05); /* Light shadow for subtle depth */
+    border: 1px solid #e0e0e0; /* Light border for clean edges */
+    max-width: 800px;
+    margin: 0 auto; /* Center alignment */
+}
+
+/* Paragraph Styling */
+.description p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    background-color: #f9f9f94f; /* Softer background for better readability */
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05); /* Soft shadow for floating effect */
+    color: #333333; /* Darker text color for better contrast */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Hover Effect for Paragraphs */
+.description p:hover {
+    background-color: #f1f1f1; /* Slightly darker background on hover */
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+/* Heading Styling */
+.description h1 {
+    font-size: 2rem;
+    color: #333;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #e0e0e0; /* Underline effect for heading */
+    font-family: 'Segoe UI', sans-serif; /* Modern, clean font */
+    letter-spacing: 1px;
+    text-align: center; /* Center the heading for a clean layout */
+    text-transform: capitalize;
+}
+
+ /* Video Details Section */
+.video-details {
+    grid-column: 4 / 8;
+    grid-row: 3 / 9;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-y: auto; /* Scroll when content exceeds height */
+}
+
+.video-details:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.video-details h1 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.video-details ul {
+    list-style: none;
+}
+
+.video-details ul li {
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.video-details ul li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    body {
+        grid-template-columns: 1fr; /* Single column for smaller screens */
+    }
+
+    .chart {
+        max-width: 200px;
+    }
+
+    .worth, .chart-container, .positive, .negative, .description, .rating {
+        grid-column: 1 / -1; /* Full width in smaller view */
+    }
+
+    .chart-description {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .chart-description div {
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .chart {
+        max-width: 250px;
+        }
+        .chart-text {
+            font-size: 2rem;
+        }
+        .chart-description {
+            flex-direction: column;
+        }
+        .chart-description div {
+            margin: 10px 0;
+        }
+
+    /* .chart {
+        max-width: 150px;
+    }
+
+    .chart-text, .chart-description div {
+        font-size: 4vw;
+    } */
+
+    .worth h1, .worth h3, .chart-text, .positive h3, .negative h3, .description, .stars {
+        font-size: 4vw;
+    }
+
+    .positive ul li, .negative ul li {
+        padding: 8px;
+    }
+}
