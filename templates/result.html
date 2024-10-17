@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,12 +19,14 @@
     <div class="chart-container white-bg">
         <h1>Comment Sentiment Distribution</h1>
         <div class="chart">
-            <div class="chart-text">70%</div>
+            <!-- <div class="chart-text" id="percentage">70%</div> -->
+            <!-- Add this inner element to create the hollow part -->
+            <div class="chart-inner"></div>
         </div>
         <div class="chart-description">
-            <div class="positive">Positive</div>
-            <div class="neutral">Neutral</div>
-            <div class="negative">Negative</div>
+            <div class="positive">Positive: <span id="positive-percentage">{{pos_percentage}}%</span></div>
+            <div class="neutral">Neutral: <span id="neutral-percentage">{{neg_percentage}}%</span></div>
+            <div class="negative">Negative: <span id="negative-percentage">{{neu_percentage}}%</span></div>
         </div>
     </div>
 
@@ -67,6 +70,7 @@
         </ul>
     </div>
 
+    <script src="{% static 'js/result.js' %}"></script>
 
 </body>
 

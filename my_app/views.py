@@ -26,9 +26,12 @@ def result(request):
         #Extract keywords from description
         keywords = sa.gen_keyword(description)
 
+        print(f"Length of comments: {len(comments)}") 
+        print(f"Length of keywords: {len(keywords)}") 
         #Filter comments
         rel_comments = sa.filtering(comments,keywords)
-
+        
+        
         #Analyze sentiment
         positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var = sa.analyse_sentiment(rel_comments)
 
@@ -37,6 +40,12 @@ def result(request):
         
         # Get video details
         video_details = sa.get_video_details(youtube_url)
+
+        print(f"Positive count in views: {positive_count}")
+        #Percentage count for the chart
+        pos_percentage = int((positive_count/200) * 100)
+        neg_percentage = int((negative_count/200) * 100)
+        neu_percentage = int((neutral_count/200) * 100)
 
         # Pass the results to the template
         context = {
@@ -49,7 +58,11 @@ def result(request):
             'views': video_details['views'],
             'likes': video_details['likes'],
             'dislikes': video_details['dislikes'],
-            'comments': video_details['comments']
+            'comments': video_details['comments'],
+            'pos_percentage': pos_percentage,
+            'neg_percentage': neg_percentage,
+            'neu_percentage': neu_percentage,
+
         }
         
         return render(request, 'result.html', context)

@@ -71,92 +71,103 @@ font-family: 'Segoe UI', sans-serif;
 
 /* Main Chart Styling */
 .chart {
-    width: 100%;
-    max-width: 320px;
-    aspect-ratio: 1;
-    background: conic-gradient(
-        #4CAF50 0 70%,  /* Positive 70% */
-        #FFC107 70% 80%, /* Neutral 10% */
-        #F44336 80% 100% /* Negative 20% */
-    );
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft Shadow */
-    position: relative;
-    transition: transform 0.3s ease-in-out;
+width: 100%;
+max-width: 320px;
+aspect-ratio: 1;
+background: conic-gradient(
+#4CAF50 0 70%,  /* Positive 70% */
+#FFC107 70% 80%, /* Neutral 10% */
+#F44336 80% 100% /* Negative 20% */
+);
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 25px;
+box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Soft Shadow */
+position: relative;
+transition: transform 0.3s ease-in-out;
 }
 
 .chart:hover {
-    transform: scale(1.05); /* Hover effect for better interaction */
+transform: scale(1.05); /* Hover effect for better interaction */
+}
+
+/* This is the 'hole' in the middle to create the doughnut effect */
+.chart-inner {
+width: 50%; /* Adjust size of the inner circle as needed */
+height: 50%;
+background-color: #fff; /* Inner circle color */
+border-radius: 50%;
+position: absolute; /* Position it inside the chart */
+z-index: 1; /* Ensure it's on top of the gradient */
 }
 
 /* Inner Text Styling */
 .chart-text {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #fff;
-    position: absolute;
-    letter-spacing: 1px;
-    text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Text Shadow */
-    transition: color 0.3s ease;
+font-size: 2.5rem;
+font-weight: bold;
+color: #fff;
+position: absolute;
+letter-spacing: 1px;
+text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2); /* Text Shadow */
+transition: color 0.3s ease;
+z-index: 2; /* Make sure the text stays on top of everything */
 }
 
 .chart:hover .chart-text {
-    color: #ffeb3b; /* Subtle color change on hover */
+color: #ffeb3b; /* Subtle color change on hover */
 }
 
 /* Description Container */
 .chart-description {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 1rem;
-    color: #444;
-    font-family: 'Arial', sans-serif;
-    margin-bottom: 20px;
+display: flex;
+justify-content: space-between;
+width: 100%;
+font-size: 1rem;
+color: #444;
+font-family: 'Arial', sans-serif;
+margin-bottom: 20px;
 }
 
 .chart-description div {
-    background: linear-gradient(135deg, #3b82f6, #0ea5e9); /* Gradient background */
-    color: #fff;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    flex: 1;
-    margin: 0 10px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    transition: transform 0.3s ease, background 0.4s ease;
-    font-size: 1.2rem;
-    font-weight: 500;
-    text-transform: uppercase; /* Modern all-caps style */
-    letter-spacing: 1px;
+background: linear-gradient(135deg, #3b82f6, #0ea5e9); /* Gradient background */
+color: #fff;
+padding: 15px;
+border-radius: 12px;
+text-align: center;
+flex: 1;
+margin: 0 10px;
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+transition: transform 0.3s ease, background 0.4s ease;
+font-size: 1.2rem;
+font-weight: 500;
+text-transform: uppercase; /* Modern all-caps style */
+letter-spacing: 1px;
 }
 
 .chart-description div:hover {
-    transform: translateY(-8px) scale(1.05); /* Lift and enlarge effect */
-    background: linear-gradient(135deg, #60a5fa, #38bdf8); /* Brighter gradient on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+transform: translateY(-8px) scale(1.05); /* Lift and enlarge effect */
+background: linear-gradient(135deg, #60a5fa, #38bdf8); /* Brighter gradient on hover */
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
 }
 
 .chart-description div:active {
-    transform: translateY(-4px) scale(1); /* Slight pushback on click */
-    background: linear-gradient(135deg, #2563eb, #0ea5e9); /* Darker color on click */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+transform: translateY(-4px) scale(1); /* Slight pushback on click */
+background: linear-gradient(135deg, #2563eb, #0ea5e9); /* Darker color on click */
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .chart-description .positive {
-    background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient for positive */
+background: linear-gradient(135deg, #4caf50, #81c784); /* Green gradient for positive */
 }
 
 .chart-description .neutral {
-    background: linear-gradient(135deg, #ffca28, #ffd54f); /* Yellow gradient for neutral */
+background: linear-gradient(135deg, #ffca28, #ffd54f); /* Yellow gradient for neutral */
 }
 
 .chart-description .negative {
-    background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negative */
+background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negative */
 }
 
 
