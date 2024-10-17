@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="./static/css/style.css" />
 
+
 </head>
 
 <body>
@@ -44,6 +45,26 @@
         <input type="text" name="youtube_url" placeholder="Enter youtube URL" required>
       </div>
 
+       <!-- Category Section -->
+    <section class="categories">
+      <div class="category-container">
+        <span class="category">Technology</span>
+        <span class="category">Education</span>
+        <span class="category">Ecommerce</span>
+        <span class="category">Live Vlogs</span>
+        <span class="category">Movies</span>
+        <span class="category">Web Series</span>
+        <span class="category">Fitness</span>
+        <span class="category">Gym</span>
+        <span class="category">Music Videos</span>
+        <span class="category">Tutorials and How-Tos</span>
+        <span class="category">Gaming Streams</span>
+        <span class="category">Travel Vlogs</span>
+        <span class="category">Comedy</span>
+        <span class="category">Unboxing Videos</span>
+      </div>
+    </section>
+
       <div class="prompt">
         <textarea name="description" placeholder="What are you looking for in this video..."></textarea>
       </div>
@@ -56,6 +77,19 @@
   </Section>
 
   <script src="{% static 'js/main.js' %}"></script>
+  <script>document.addEventListener("DOMContentLoaded", function() {
+    // Select all the category elements
+    const categories = document.querySelectorAll('.category');
+    
+    // Add click event listener to each category
+    categories.forEach((category) => {
+        category.addEventListener('click', function() {
+            // Toggle the 'selected' class when clicked
+            this.classList.toggle('selected');
+        });
+    });
+});
+</script>
 </body>
 
 </html>

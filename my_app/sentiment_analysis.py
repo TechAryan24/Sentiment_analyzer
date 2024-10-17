@@ -390,12 +390,12 @@ def get_video_details(youtube_url):
 
     video_id = youtube_url.split("v=")[-1].split("&")[0]
     
-    # Make a request to the YouTube API to get video details
-    request = youtube.videos().list(
-        part="snippet,statistics",  # We need snippet for metadata and statistics for views, likes, etc.
-        id=video_id
-    )
-    response = request.execute()
+#     # Make a request to the YouTube API to get video details
+#     request = youtube.videos().list(
+#         part="snippet,statistics",  # We need snippet for metadata and statistics for views, likes, etc.
+#         id=video_id
+#     )
+#     response = request.execute()
 
     if not response['items']:
         return None  # No video found with this ID
@@ -409,17 +409,17 @@ def get_video_details(youtube_url):
     published_at_date = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ").date()
     readable_date = published_at_date.strftime("%B %d, %Y")  # Example: September 13, 2024
 
-    # Extract the required details
-    video_details = {
-        'title': video_data['snippet']['title'],
-        'published_at': readable_date,
-        'views': video_data['statistics'].get('viewCount', '0'),
-        'likes': video_data['statistics'].get('likeCount', '0'),
-        'dislikes': video_data['statistics'].get('dislikeCount', '0'),
-        'comments': video_data['statistics'].get('commentCount', '0'),
-    }
+#     # Extract the required details
+#     video_details = {
+#         'title': video_data['snippet']['title'],
+#         'published_at': readable_date,
+#         'views': video_data['statistics'].get('viewCount', '0'),
+#         'likes': video_data['statistics'].get('likeCount', '0'),
+#         'dislikes': video_data['statistics'].get('dislikeCount', '0'),
+#         'comments': video_data['statistics'].get('commentCount', '0'),
+#     }
 
-    return video_details
+#     return video_details
 
 
 
