@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opinimate</title>
     <link rel="stylesheet" href="/static/css/result.css" />
 </head>
+
 <body>
     <!-- Worth Section -->
     <div class="worth white-bg">
-        <div class="worth-text">It's Worth or Not</div> 
+        <div class="worth-text">{{result}}</div>
     </div>
 
     <!-- Chart Section -->
@@ -29,11 +31,9 @@
     <div class="positive">
         <h3>Top 5 Positive Comments</h3>
         <ul>
-            <li>Great product, highly recommended!</li>
-            <li>Very satisfied with the quality.</li>
-            <li>Worth every penny, must buy!</li>
-            <li>Amazing customer service, fast shipping.</li>
-            <li>Best in the market for this price range.</li>
+            {% for comment in positive_comments|slice:":5" %}
+            <li>{{ comment }}</li>
+            {% endfor %}
         </ul>
     </div>
 
@@ -41,34 +41,33 @@
     <div class="negative">
         <h3>Top 5 Negative Comments</h3>
         <ul>
-            <li>Poor build quality, not as expected.</li>
-            <li>Customer service was not helpful.</li>
-            <li>Product arrived damaged, very disappointing.</li>
-            <li>Too expensive for the quality it offers.</li>
-            <li>Shipping took way too long.</li>
+            {% for comment in negative_comments|slice:":5" %}
+            <li>{{ comment }}</li>
+            {% endfor %}
         </ul>
     </div>
 
     <!-- Description Section -->
     <div class="description white-bg">
         <h1>Description</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vulputate nisl a venenatis luctus. Sed at aliquet leo, sed vehicula eros. Donec nec scelerisque velit, a vehicula dolor. Integer vehicula libero eget magna vestibulum, in viverra erat hendrerit. Aliquam et nulla vel nunc placerat consequat. Quisque vel vestibulum elit, vel malesuada mi.</p>
+        <p>{{ description }}</p>
     </div>
 
     <!-- Video Details -->
-     
+
     <div class="video-details white-bg">
         <h1>Video Details</h1>
         <ul>
-            <li>Title: "Understanding AI and Machine Learning"</li>
-            <li>Views: 1,000,000</li>
-            <li>Likes: 85,000</li>
-            <li>Dislikes: 5,000</li>
-            <li>Comments: 10,000</li>
-            <li>Uploaded: March 2024</li>
+            <li>Title: {{ title }}</li>
+            <li>Views: {{ views }}</li>
+            <li>Likes: {{ likes }}</li>
+            <li>Dislikes: {{ dislikes }}</li>
+            <li>Comments: {{ comments }}</li>
+            <li>Uploaded: {{ published_at }}</li>
         </ul>
     </div>
 
-    
+
 </body>
+
 </html>

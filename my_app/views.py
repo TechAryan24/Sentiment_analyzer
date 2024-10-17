@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .sentiment_analyzer import analyze_comments, generate_description  # Import your analysis functions
+from . import sentiment_analysis as sa
 
 # Create your views here.
 def index(request):
@@ -9,9 +9,50 @@ def index(request):
 def login(request):
     return render (request,'login.html')
 
-def result(request):
-    return render (request,'result.html')
+# def result(request):
+#     return render (request,'result.html')
 
 def signup(request):
     return render (request,'signup.html')
 
+def result(request):
+    if request.method == 'POST':
+        youtube_url = request.POST.get('youtube_url')
+        description = request.POST.get('description')
+
+        # Trigger the YouTube comment analysis
+        comments = sa.analyze_comments(youtube_url)
+        
+        #Extract keywords from description
+        keywords = sa.gen_keyword(description)
+
+        #Filter comments
+        rel_comments = sa.filtering(comments,keywords)
+
+        #Analyze sentiment
+        positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var = sa.analyse_sentiment(rel_comments)
+
+        # Generate the description
+        generated_description, result = sa.gen_desc(positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var)
+        
+        # Get video details
+        video_details = sa.get_video_details(youtube_url)
+
+        # Pass the results to the template
+        context = {
+            'description': generated_description,
+            'result': result,
+            'positive_comments': positive_comments_var,  
+            'negative_comments': negative_comments_var, 
+            'title': video_details['title'],
+            'published_at': video_details['published_at'],
+            'views': video_details['views'],
+            'likes': video_details['likes'],
+            'dislikes': video_details['dislikes'],
+            'comments': video_details['comments']
+        }
+        
+        return render(request, 'result.html', context)
+
+    # In case of a GET request, just show an empty form or redirect
+    return render(request, 'index.html')
