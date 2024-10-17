@@ -38,13 +38,14 @@
 
   <Section class="main">
     <div class="url-box-container">
-      <form method="POST" action="{% url 'result' %}"></form>
+      <form method="POST" action="{% url 'result' %}">
+        {% csrf_token %}
       <div class="url-box">
-        <input type="text" placeholder="Enter youtube URL">
+        <input type="text" name="youtube_url" placeholder="Enter youtube URL" required>
       </div>
 
       <div class="prompt">
-        <textarea placeholder="What are you looking for in this video..."></textarea>
+        <textarea name="description" placeholder="What are you looking for in this video..."></textarea>
       </div>
 
       <div>
