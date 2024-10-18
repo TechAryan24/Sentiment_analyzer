@@ -1,19 +1,67 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http import HttpResponse
 from . import sentiment_analysis as sa
+from .models import User
+from django.contrib import messages
 
 # Create your views here.
 def index(request):
     return render (request,'index.html')
 
-def login(request):
-    return render (request,'login.html')
-
 # def result(request):
 #     return render (request,'result.html')
 
+# Signup view
 def signup(request):
-    return render (request,'signup.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Check if the email already exists
+        if User.objects.filter(email=email).exists():
+            messages.error(request, 'Email already exists.')
+            return redirect('signup')
+
+        # Save user data to the database
+        user = User.objects.create(name=name, email=email, password=password)
+        user.save()
+
+        messages.success(request, 'User created successfully.')
+        return redirect('login')
+
+    return render(request, 'signup.html')
+
+
+# Login view
+def login(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+
+        # Verify user credentials
+        try:
+            user = User.objects.get(email=email, password=password)
+        except User.DoesNotExist:
+            user = None
+
+        if user is not None:
+            # Store the user's name in session to display in index.html
+            request.session['user_name'] = user.name
+            messages.success(request, "You have logged in successfully!")
+            return redirect('home')  # Redirect to homepage
+        else:
+            messages.error(request, "Invalid email or password!")
+
+    return render(request, 'login.html')
+
+    # Logout view (optional)
+def logout(request):
+    auth_logout(request)
+    # Clear the session to ensure user data is removed
+    request.session.flush()  # This will clear all session data
+    return redirect('home')  # Redirect to home page
 
 def result(request):
     if request.method == 'POST':
