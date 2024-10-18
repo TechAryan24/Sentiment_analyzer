@@ -43,10 +43,15 @@
     <div class="right-box">
       <h2>New Here?</h2>
       <p>Sign up and discover a great amount of new opportunities!</p>
-      <button class="sign-up-btn">Sign Up</button>
+      <button id="Sign-up" class="sign-up-btn">Sign Up</button>
     </div>
   </div>
 
+  <script>
+     document.getElementById('Sign-up').addEventListener('click', function () {
+      window.location.href = "/signup/";
+     })
+  </script>
 
 </body>
 

@@ -2,17 +2,27 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http import HttpResponse
 from . import sentiment_analysis as sa
+<<<<<<< HEAD
 from .models import User
 from django.contrib import messages
+=======
+import math
+>>>>>>> upstream/main
 
 # Create your views here.
 def index(request):
     return render (request,'index.html')
 
+<<<<<<< HEAD
 # def result(request):
 #     return render (request,'result.html')
 
 # Signup view
+=======
+def login(request):
+    return render (request,'login.html')
+
+>>>>>>> upstream/main
 def signup(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -67,18 +77,27 @@ def result(request):
     if request.method == 'POST':
         youtube_url = request.POST.get('youtube_url')
         description = request.POST.get('description')
+        
+        # Get selected categories from the form
+        selected_categories = request.POST.get('categories', '').split(',')
 
         # Trigger the YouTube comment analysis
         comments = sa.analyze_comments(youtube_url)
         
         #Extract keywords from description
-        keywords = sa.gen_keyword(description)
+        partialKeywords = sa.gen_keyword(description)
+        
+        keywords = []
 
+        # Combine selected categories and keywords from description
+        keywords = selected_categories + partialKeywords
+        
         print(f"Length of comments: {len(comments)}") 
         print(f"Length of keywords: {len(keywords)}") 
+        print(f"keywords: {keywords}")
         #Filter comments
         rel_comments = sa.filtering(comments,keywords)
-        
+        total = len(rel_comments)
         
         #Analyze sentiment
         positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var = sa.analyse_sentiment(rel_comments)
@@ -91,9 +110,9 @@ def result(request):
 
         print(f"Positive count in views: {positive_count}")
         #Percentage count for the chart
-        pos_percentage = int((positive_count/200) * 100)
-        neg_percentage = int((negative_count/200) * 100)
-        neu_percentage = int((neutral_count/200) * 100)
+        pos_percentage = math.ceil((positive_count/total) * 100)
+        neg_percentage = math.ceil((negative_count/total) * 100)
+        neu_percentage = math.ceil((neutral_count/total) * 100)
 
         # Pass the results to the template
         context = {
@@ -110,7 +129,6 @@ def result(request):
             'pos_percentage': pos_percentage,
             'neg_percentage': neg_percentage,
             'neu_percentage': neu_percentage,
-
         }
         
         return render(request, 'result.html', context)

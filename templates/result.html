@@ -25,8 +25,8 @@
         </div>
         <div class="chart-description">
             <div class="positive">Positive: <span id="positive-percentage">{{pos_percentage}}%</span></div>
-            <div class="neutral">Neutral: <span id="neutral-percentage">{{neg_percentage}}%</span></div>
-            <div class="negative">Negative: <span id="negative-percentage">{{neu_percentage}}%</span></div>
+            <div class="negative">Negative: <span id="negative-percentage">{{neg_percentage}}%</span></div>
+            <div class="neutral">Neutral: <span id="neutral-percentage">{{neu_percentage}}%</span></div>
         </div>
     </div>
 
@@ -69,8 +69,44 @@
             <li>Uploaded: {{ published_at }}</li>
         </ul>
     </div>
+    
+    <script>
+        // Update the chart's gradient based on values
+        let positivePercent = parseFloat("{{pos_percentage}}");
+        let neutralPercent = parseFloat("{{neu_percentage}}");
+        let negativePercent = parseFloat("{{neg_percentage}}");
 
-    <script src="{% static 'js/result.js' %}"></script>
+        // Update the chart's background
+
+        if (positivePercent > neutralPercent && positivePercent > negativePercent) {
+            document.querySelector('.chart').style.background =
+                `conic-gradient(
+        red 0 ${negativePercent}%,
+        #ffca28 ${negativePercent}% ${negativePercent + neutralPercent}%,
+        #4CAF50 ${negativePercent + neutralPercent}% 100%)`;
+        }
+        else if (negativePercent > neutralPercent && negativePercent > positivePercent) {
+            document.querySelector('.chart').style.background =
+                `conic-gradient(
+        yellow 0 ${neutralPercent}%,
+        #4CAF50 ${neutralPercent}% ${neutralPercent + positivePercent}%,
+        #4CAF50 ${neutralPercent + positivePercent}% 100%)`;
+        } else {
+            document.querySelector('.chart').style.background =
+                `conic-gradient(
+        #4CAF50 0 ${positivePercent}%,
+        red ${positivePercent}% ${positivePercent + negativePercent}%,
+        #ffca28 ${positivePercent + negativePercent}% 100%)`;
+        }
+
+        // Optionally update the chart text with the dominant sentiment
+        let dominant = Math.max(positivePercent, neutralPercent, negativePercent);
+        let dominantSentiment = dominant === positivePercent ? 'Positive'
+            : dominant === neutralPercent ? 'Neutral'
+                : 'Negative';
+        document.getElementById('percentage').innerText = `${dominantSentiment}: ${dominant}%`;
+
+    </script>
 
 </body>
 
