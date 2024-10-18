@@ -338,7 +338,6 @@ background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negat
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 /* Responsive Design */
 @media (max-width: 1024px) {
     body {
