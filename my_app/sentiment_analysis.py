@@ -66,7 +66,7 @@ def analyze_comments(youtube_url):
             csvwriter.writerow([comment])
     
     print(f" Length of filtered comment: {len(related_comments)} ")
-    return related_comments
+    return related_comments, video_id
 
 def filter_related_comments(comments):
     return [comment for comment in comments if is_related(comment)]

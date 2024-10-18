@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout as aut
 from django.http import HttpResponse
 from . import sentiment_analysis as sa
 from .models import User
+from .models import VideoSentiment
 from django.contrib import messages
 import math
 
@@ -72,29 +73,82 @@ def result(request):
         selected_categories = request.POST.get('categories', '').split(',')
 
         # Trigger the YouTube comment analysis
-        comments = sa.analyze_comments(youtube_url)
-        
-        #Extract keywords from description
-        partialKeywords = sa.gen_keyword(description)
-        
-        keywords = []
+        comments, video_id = sa.analyze_comments(youtube_url)
 
-        # Combine selected categories and keywords from description
-        keywords = selected_categories + partialKeywords
+        # Check if the video has already been analyzed
+        video_sentiment = VideoSentiment.objects.filter(video_id=video_id).first()
         
-        print(f"Length of comments: {len(comments)}") 
-        print(f"Length of keywords: {len(keywords)}") 
-        print(f"keywords: {keywords}")
-        #Filter comments
-        rel_comments = sa.filtering(comments,keywords)
-        
-        #Analyze sentiment
-        positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var = sa.analyse_sentiment(rel_comments)
-        total = positive_count + negative_count + neutral_count
-        print(f"total: {total}")
-        # Generate the description
-        generated_description, result = sa.gen_desc(positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var)
-        
+        if video_sentiment:
+            # Video has been analyzed, use stored values
+            positive_count = video_sentiment.positive_count
+            negative_count = video_sentiment.negative_count
+            neutral_count = video_sentiment.neutral_count
+            generated_description = video_sentiment.gen_description
+            result = video_sentiment.result
+
+            total = positive_count + negative_count + neutral_count
+
+            #Percentage count for the chart
+            if total > 0:
+                pos_percentage = int((positive_count / total) * 100)
+                neg_percentage = int((negative_count / total) * 100)
+                neu_percentage = int((neutral_count / total) * 100)
+            else:
+                pos_percentage = neg_percentage = neu_percentage = 0
+
+            # Deserialize comments
+            positive_comments_var = video_sentiment.get_positive_comments()
+            negative_comments_var = video_sentiment.get_negative_comments()
+
+            # Get video details
+            video_details = sa.get_video_details(youtube_url)
+
+            # Pass the results to the template
+            context = {
+                'description': generated_description,
+                'result': result,
+                'pos_percentage': pos_percentage,
+                'neg_percentage': neg_percentage,
+                'neu_percentage': neu_percentage,
+            }
+        else: 
+            #Extract keywords from description
+            partialKeywords = sa.gen_keyword(description)
+            
+            keywords = []
+
+            # Combine selected categories and keywords from description
+            keywords = selected_categories + partialKeywords
+            
+            print(f"Length of keywords: {len(keywords)}") 
+            print(f"keywords: {keywords}")
+            #Filter comments
+            rel_comments = sa.filtering(comments,keywords)
+            
+            #Analyze sentiment
+            positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var = sa.analyse_sentiment(rel_comments)
+
+            total = positive_count + negative_count + neutral_count
+            print(f"total: {total}")
+            # Generate the description
+            generated_description, result = sa.gen_desc(positive_count, negative_count, neutral_count, positive_comments_var,negative_comments_var,neutral_comments_var)
+            
+            # Save the analysis result to the database
+            video_sentiment = VideoSentiment.objects.create(
+                video_id=video_id,
+                positive_count=positive_count,
+                negative_count=negative_count,
+                neutral_count=neutral_count,
+                gen_description=generated_description,
+                result=result,
+            )
+
+            # Serialize and save the lists
+            video_sentiment.set_positive_comments(positive_comments_var)
+            video_sentiment.set_negative_comments(negative_comments_var)
+
+            video_sentiment.save()
+
         # Get video details
         video_details = sa.get_video_details(youtube_url)
 
