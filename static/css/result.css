@@ -338,6 +338,25 @@ background: linear-gradient(135deg, #f44336, #e57373); /* Red gradient for negat
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.btn {
+    border: 1px solid white;
+    width: 70%;
+    height: 48px;
+    border-radius: 13px;
+    padding: 7px;
+    background-color: #08003a;
+    color: white;
+    text-align: center;
+    margin: 21px 0px 0px 301%;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    cursor: pointer;
+    background-color: #3d3286;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     body {

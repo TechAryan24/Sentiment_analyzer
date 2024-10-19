@@ -69,7 +69,8 @@
             <li>Uploaded: {{ published_at }}</li>
         </ul>
     </div>
-    
+
+    <a class="btn" href=""> Return </a>
     <script>
         // Update the chart's gradient based on values
         let positivePercent = parseFloat("{{pos_percentage}}");
@@ -105,6 +106,10 @@
             : dominant === neutralPercent ? 'Neutral'
                 : 'Negative';
         document.getElementById('percentage').innerText = `${dominantSentiment}: ${dominant}%`;
+
+        document.getElementById('return-btn').addEventListener('click', function () {
+            window.location.href = "{% url 'home' %}";
+    });
 
     </script>
 

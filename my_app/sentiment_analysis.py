@@ -66,7 +66,7 @@ def analyze_comments(youtube_url):
             csvwriter.writerow([comment])
     
     print(f" Length of filtered comment: {len(related_comments)} ")
-    return related_comments
+    return related_comments, video_id
 
 def filter_related_comments(comments):
     return [comment for comment in comments if is_related(comment)]
@@ -97,7 +97,7 @@ def is_related(comment):
 ################### Establishing Gemini API ########################
 
 generation_config = {
-  "temperature": 0,
+  "temperature": 1,
   "top_p": 0.95,
   "top_k": 64,
   "max_output_tokens": 8192,
