@@ -2,27 +2,18 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.http import HttpResponse
 from . import sentiment_analysis as sa
-<<<<<<< HEAD
 from .models import User
 from django.contrib import messages
-=======
 import math
->>>>>>> upstream/main
 
 # Create your views here.
 def index(request):
     return render (request,'index.html')
 
-<<<<<<< HEAD
 # def result(request):
 #     return render (request,'result.html')
 
 # Signup view
-=======
-def login(request):
-    return render (request,'login.html')
-
->>>>>>> upstream/main
 def signup(request):
     if request.method == 'POST':
         name = request.POST.get('name')
